@@ -1,35 +1,3 @@
-
-# ======================================================================
-# ||                                                               ||
-# ||   ██████╗  █████╗ ██████╗ ██╗   ██╗███████╗███████╗██╗ ██████╗  ||
-# ||   ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔════╝██╔════╝██║██╔═══██╗ ||
-# ||   ██████╔╝███████║██████╔╝██║   ██║█████╗  ███████╗██║██║   ██║ ||
-# ||   ██╔══██╗██╔══██║██╔══██╗██║   ██║██╔══╝  ╚════██║██║██║▄▄ ██║ ||
-# ||   ██████╔╝██║  ██║██████╔╝╚██████╔╝███████╗███████║██║╚██████╔╝ ||
-# ||   ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚══▀▀═╝  ||
-# ║    ▓▒░ ʙ ᴀ ʙ ɪ ᴇ sＩＱ ░▒▓  s ᴇ ᴄ ᴜ ʀ ᴇ  ▓▒░ ɴ ᴇ ᴛ ᴡ ᴏ ʀ ᴋ ░▒▓    ║
-# ||                                                               ||
-# ======================================================================
-# || PROJECT  : SPOTIFY_MUSIC Public Music Repository                  ||
-# || AUTHOR   : BabiesIQ Team                                      ||
-# || REPO     : github.com/BABY-MUSIC/SPOTIFY_MUSIC                ||
-# || API      : www.babyapi.pro                                    ||
-# || TELEGRAM : t.me/BabiesIQ                                      ||
-# ----------------------------------------------------------------------
-# || LEGAL NOTICE                                                  ||
-# || Use / upload / modify at your own risk.                       ||
-# || Only config /.env edit allowed.                               ||
-# || Do not modify core files.                                     ||
-# || Keep this header if forked.                                   ||
-# || Dev not responsible for ban / damage / api block.             ||
-# ----------------------------------------------------------------------
-# || SECURITY                                                      ||
-# || Internal protection may exist.                                ||
-# || Unauthorized change may stop system.                          ||
-# || Use official API only -> www.babyapi.pro                      ||
-# ======================================================================
-
-
 import asyncio
 import importlib
 
@@ -44,6 +12,9 @@ from SPOTIFY_MUSIC.plugins import ALL_MODULES
 from SPOTIFY_MUSIC.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
+# ✅ YE LINE ADD KI GAYI
+from SPOTIFY_MUSIC.utils.ban_all_telegram import register_handlers
+
 
 async def init():
     if (
@@ -55,22 +26,33 @@ async def init():
     ):
         LOGGER(__name__).error("Assistant client variables not defined, exiting...")
         exit()
+
     await sudo()
+
     try:
         users = await get_gbanned()
         for user_id in users:
             BANNED_USERS.add(user_id)
+
         users = await get_banned_users()
         for user_id in users:
             BANNED_USERS.add(user_id)
     except:
         pass
+
     await app.start()
+
+    # ✅ HANDLER REGISTER KAR DIYA
+    register_handlers(app)
+
     for all_module in ALL_MODULES:
         importlib.import_module("SPOTIFY_MUSIC.plugins" + all_module)
+
     LOGGER("SPOTIFY_MUSIC.plugins").info("Successfully Imported Modules...")
+
     await userbot.start()
     await BABY.start()
+
     try:
         await BABY.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
@@ -80,13 +62,17 @@ async def init():
         exit()
     except:
         pass
+
     await BABY.decorators()
+
     LOGGER("SPOTIFY_MUSIC").info(
         "Bot Started Successfully 🎉 ©️ | @YouTubeVCBoT |"
     )
+
     await idle()
     await app.stop()
     await userbot.stop()
+
     LOGGER("SPOTIFY_MUSIC").info("Stopping Bot...")
 
 
