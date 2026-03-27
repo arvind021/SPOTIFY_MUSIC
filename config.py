@@ -65,10 +65,10 @@ GIT_TOKEN = getenv(
 )
 # ------------------------------------------------------------------------
 # -------------------------------------------------------------------------
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/+gF7M1_0PC803ZjU9")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/YTM_Points")
-SOURCE = getenv("SOURCE", "https://github.com/BABY-MUSIC/SPOTIFY_MUSIC")
-CHAT = getenv("CHAT", "https://t.me/+q43QONRtkrg5NGFk")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/+dZCL9T23szs5MzVl")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+dZCL9T23szs5MzVl")
+SOURCE = getenv("SOURCE", "https://t.me/+dZCL9T23szs5MzVl")
+CHAT = getenv("CHAT", "https://t.me/+dZCL9T23szs5MzVl")
 # --------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "False")
